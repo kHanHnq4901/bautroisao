@@ -422,31 +422,10 @@
             createRose(true);
         }
 
-        setInterval(createFallingText, 500);
-        setInterval(createHeart, 1500);
-        setInterval(createRose, 700);
-        document.addEventListener("click", (e) => {
-            const symbols = ["🌸", "🌟", "❤️", "💫", "💖", "🎉", "✨", "🌹", "💎"];
-            const flower = document.createElement("div");
-            flower.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-
-            flower.style.position = "absolute";
-            flower.style.left = e.clientX + "px";
-            flower.style.top = e.clientY + "px";
-            flower.style.fontSize = Math.random() * 1.5 + 1.5 + "rem"; // 1.5rem - 3rem
-            flower.style.transition = "transform 1s ease-out, opacity 1s ease-out";
-            flower.style.zIndex = 9999;
-            flower.style.pointerEvents = "none";
-
-            document.body.appendChild(flower);
-
-            setTimeout(() => {
-                flower.style.transform = `scale(${Math.random() * 1 + 1.5}) translateY(-60px) rotate(${Math.random() * 360}deg)`;
-                flower.style.opacity = "0";
-            }, 0);
-
-            setTimeout(() => flower.remove(), 1000);
-        });
+        setInterval(createFallingText, 100);
+        setInterval(createHeart, 2000);
+        setInterval(createRose, 2000);
+        
     </script>
     
 <script>
