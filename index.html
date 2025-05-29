@@ -374,7 +374,7 @@
         let activeRoses = [];
 
         function createRose(initial = false) {
-            if (activeRoses.length > 20) return; // Giới hạn tối đa 20 icon đang rơi
+            if (activeRoses.length > 10) return; // Giới hạn tối đa 20 icon đang rơi
 
             const icons = ["💖", "💕", "💓", "💗", "❤️", "💘", "🌹", "🌺", "🌸", "🌼"];
             const rose = document.createElement("div");
@@ -423,8 +423,8 @@
         }
 
         setInterval(createFallingText, 100);
-        setInterval(createHeart, 2000);
-        setInterval(createRose, 2000);
+        setInterval(createHeart, 10000);
+        setInterval(createRose, 10000);
         
     </script>
     
