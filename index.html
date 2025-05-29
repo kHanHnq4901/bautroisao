@@ -371,7 +371,11 @@
             });
         }
 
+        let activeRoses = [];
+
         function createRose(initial = false) {
+            if (activeRoses.length > 20) return; // Giới hạn tối đa 20 icon đang rơi
+
             const icons = ["💖", "💕", "💓", "💗", "❤️", "💘", "🌹", "🌺", "🌸", "🌼"];
             const rose = document.createElement("div");
             rose.className = "rose";
@@ -382,12 +386,13 @@
             rose.classList.add(layerClass);
             rose.style.left = startX + "px";
             rose.style.top = initial ? (Math.random() * window.innerHeight) + "px" : "-50px";
-            rose.style.fontSize = `${Math.random() * 1.5 + 1.5}rem`; // Từ 1.5rem đến 3rem
+            rose.style.fontSize = `${Math.random() * 1.5 + 1.5}rem`;
             rose.style.position = "absolute";
             rose.style.pointerEvents = "none";
             rose.style.zIndex = 5;
 
             scene.appendChild(rose);
+            activeRoses.push(rose); // Thêm vào mảng quản lý
 
             let posY = initial ? parseFloat(rose.style.top) : -50;
             const speed = Math.random() * 0.8 + 0.4;
@@ -398,6 +403,7 @@
 
                 if (posY > window.innerHeight + 50) {
                     rose.remove();
+                    activeRoses = activeRoses.filter(r => r !== rose); // Xóa khỏi danh sách
                 } else {
                     requestAnimationFrame(animateRose);
                 }
@@ -442,29 +448,7 @@
             setTimeout(() => flower.remove(), 1000);
         });
     </script>
-    <script>
-        tsParticles.load("scene", {
-        fullScreen: { enable: true, zIndex: -1 }, // Đặt z-index thấp để làm nền
-        background: {
-            color: "#000" // nền trời đen
-        },
-        particles: {
-            number: { value: 100 },
-            color: { value: "#ffffff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: { min: 1, max: 2 } },
-            move: {
-            enable: true,
-            speed: 0.2,
-            direction: "none",
-            random: true,
-            straight: false,
-            outMode: "out"
-            }
-        }
-        });
-</script>
+    
 <script>
    const numStars = 200; // Giảm số lượng sao
   const stars = [];
